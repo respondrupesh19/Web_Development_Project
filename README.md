@@ -20,25 +20,28 @@
         <li><b>MCA (Galgotias University)</b>: 7.8</li>
     </ul>
     <hr></section>
+
     <section>
     <h2>Skills</h2>
     <ul>
-        
         <li>Html , Css , JavaScripts</li>
         <li>C,SQL,DBMS,Python</li>
     </ul>
     <hr></section>
+    
     <section>
     <h2>Hobbies</h2>
      <ul>
         <li>Reading Newspaper</li>
         <li>Cooking</li>
      </ul>
-     <hr></section>
+     <hr>
+     </section>
      <footer>
      <h2>Contact Me</h2>
      <ul>
-        <li> <b>Email</b>:respondrupesh@gmail.com</li></ul>
+        <li> <b>Email</b>:respondrupesh@gmail.com</li>
+    </ul>
         <p>made with &hearts; by coding </p></footer>
 
 
