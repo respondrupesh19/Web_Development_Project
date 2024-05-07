@@ -1,0 +1,701 @@
+==========================================
+DOM (Document Object Model) : 22/02/2024
+==========================================
+
+-> The Dom represent a document with a logic tree.
+
+-> it allow us to manipulate webpage content (html element).
+
+
+==============================================
+Download Strater Code :-
+==============================================
+
+ 1) Select (Img)
+
+ 2) changes /manipulation 
+
+==============================
+Selecting Elements :-
+=================================
+-> getElementById
+
+-> return the element as an object or null (if not found)
+
+--------------------------------------
+selecting element :-
+------------------------------------
+getElementByClasssName
+
+-> return the element as an html collection or empty collection.
+
+------------------------------
+selecting element :-
+----------------------------------
+getElementByTagName
+
+-> return the element as an html collection or empty collecyion .
+
+
+---------------------------------
+Query selector :-
+-----------------------------------
+
+-> Allows us to use any css selector.
+
+document.querySelector('p');
+
+document.querySelector('#myId');
+
+document.querySelector('.myclass');
+
+
+
+==========================================
+Using properties & method :-
+==========================================
+
+-> inner text :
+
+   shows the visible text contained in a node.
+
+text content :-
+  shows all the full text 
+
+inner html:-
+  shows the full markup.
+
+
+==========================================
+Maipluting attrribute
+========================================
+
+obj.getAttributes(attr)
+
+ob.setAttribute(attr,val)
+
+-----------------------------------
+Manupluting Attributes :-
+-----------------------------------
+
+obj.getAttribute(attr);
+
+obj.setAttribute(attr,val);
+
+
+style Property :
+---------------------
+
+
+------------------------------
+Manipluting Style :-
+--------------------------------
+
+using classlist 
+
+obj.classList
+
+classList.add() to add new classes 
+
+classList.add() to remove classes
+
+classList.contains() to check if classs exists
+
+classList.toggle() to toggle b/w and remove.
+
+
+
+undefined
+heading.classList.add("yellow");
+undefined
+heading.classList
+DOMTokenList ['yellow', value: 'yellow']
+heading.style.color='yellow';
+'yellow'
+
+
+-----------------------------
+Navigation 
+-------------------------------------------------
+
+-> parentElement
+
+-> chlidren 
+
+-> prevoiusElementSibling /nextElementSibling
+
+
+
+----------------------------------------------
+Adding element:-
+--------------------------------------------
+
+document.createElement("p);
+
+-> apppendChild(element)
+
+-> append(element)       end adding anything
+
+-> prepend(element)      statring add anything
+
+-> insertAdjacentElmeent(where ,element)  any place we can add.
+
+------------------------------------------------
+-> removeChild(element)
+
+->remove(element)
+
+
+
+
+
+==================================================
+DOM Events :                            23/02/2024
+==================================================
+
+-> Events are singnals that  something  has occured (user inputs /action).
+
+------------------------------------------
+-> onclick (when an element is clicked)
+------------------------------------------
+
+Example:-
+
+ let btn=document.querySelector("button");
+console.dir(btn);   
+
+btn.onclick=function(){
+    console.log("button was clicked");
+    alert("hiii ...sorry");
+};
+
+
+
+
+-> onmouseenter(when mouse enters an elements )
+
+
+========================================
+Event Listener
+===========================================
+ addEventListener 
+
+Ex: element.addElementListener(event ,callback)
+
+
+-------------------------------
+this in event Listeners
+---------------------------
+
+-> when this is used in a callback of event handler of soething it refers to that something.
+
+==================================================
+Keywords events :-
+==================================================
+ 
+-> 
+
+
+===========================
+form event
+==============================
+
+let form=document.querySelector("form");
+
+/*form.addEventListener("submit",function(){
+
+    console.log("submitted form");
+    alert("summitted");
+});*/
+
+form.addEventListener("submit",function(event){
+    
+    event.preventDefault();
+
+    console.log("submitted form");
+    alert("summitted");
+});
+
+
+
+================================
+Extracting form Data :-
+==================================================
+
+->   form.addEventListener("submit",function(event){
+
+    event.preventDefault();
+
+    let user=document.querySelector("#user");
+    let pass=document.querySelector("#pass");
+
+    console.log("username : ",user.value);
+    console.log("password : ",pass.value);
+  
+
+
+    alert("summitted");
+});
+
+
+================================
+More Events :-
+==============================================
+ 
+change event :-
+---------------------------
+
+-> the change event occurs when the value of an element has been changed (only works on) <input>, <textarea> and <select> elements).
+
+
+input event :-
+----------------
+
+-> the input event fires when the value of an <input> and <select> elements has been changed.
+
+
+// ..............Text Editor .....................................
+
+let inp=document.querySelector("#user");
+let p=document.querySelector("p");
+
+inp.addEventListener("input",function(){
+    console.log(inp.value);
+
+    p.innerText=inp.value;
+
+
+});
+
+
+
+=================================================
+Event Bubbling :-     24/02/2024.......
+==================================================
+
+-> Ex : let div =document.querySelector("div");
+
+        let ul =document.querySelector("ul");
+
+        let li =document.querySelectorAll("li");
+
+div.addEventLsterner("click",function(event ){
+
+  event.stopPropagation();
+
+  console.log("div was clicked");
+
+});
+
+ul.addEventLsterner("click",function(event){
+   
+   event.stopPropagation();
+
+  console.log("ul was clicked");
+
+});
+
+for(li of lis)
+{
+
+li.addEventLsterner("click",function(){
+
+  console.log("li was clicked");
+
+});
+}
+
+==============================================
+Activity :-
+===============================================
+
+-> 
+let btn=document.querySelector("button");
+let ul=document.querySelector("ul");
+let inp=document.querySelector("input");
+
+btn.addEventListener("click",function(){
+
+    let item=document.createElement("li");
+    item.innerText=inp.value;
+
+    let delBtn=document.createElement("button"); 
+    delBtn.innerText="delete";
+
+    delBtn.classList.add("delete");
+
+
+    
+    item.appendChild(delBtn);
+    ul.appendChild(item);
+
+    console.log(inp.value);
+});
+
+
+ul.addEventListener("click",function(event){
+
+    if(event.target.nodeName=="BUTTON")
+    {
+        let listItem=event.target.parentElement;
+        listItem.remove();
+    }
+});
+
+
+
+==================================================
+Call Stack :- 25/02/2024
+==============================================
+
+-> LIFO
+  function one()
+  {
+ return 1;  //1
+ }
+
+ function two()
+ {
+ return one()+one(); //2
+ }
+
+ function three()
+ { 
+ let ans=two()+one(); //3
+ console.log(ans);
+ }
+
+three();
+
+
+===============================================
+Break points :-
+===============================================
+
+-> 
+
+
+==========================================
+JS is single threaded :-
+=========================================
+
+let a=25;
+console.log(a);
+
+let b=10;
+console.log(b);
+
+console.log(a+b);
+
+
+setTimeout(()=>{
+    alert("Rahul IT");
+},2000);
+
+setInterval(()=> {
+    alert("coder")
+},3000);
+
+
+===============================
+Call hell :-
+===============================
+
+ h1=document.querySelector("h1");
+
+function changeColor(color,delay ,nextColorChange){
+    setTimeout(() => {
+        h1.style.color=color;
+        
+        if(nextColorChange)
+        nextColorChange();
+    
+    }, delay);
+}
+
+
+changeColor("red",1000,()=>{
+    changeColor("green",1000,()=>{
+        changeColor("orange",1000,()=>{
+            changeColor("yellow",1000,()=>{
+                changeColor("pink",1000);
+
+            });
+
+        });
+    });
+})
+
+// callback hell ...........
+
+
+==================================
+Promises:-
+=================================
+
+-> The Promises obect represent the evebtual completion (or failure ) of an asynchronous operation and its resulting value.
+
+-> resolve & reject 
+
+-> method :- then();  , catch();
+
+
+
+========================
+promises chaning 
+==========================
+
+-> improved versions
+
+
+=============================================
+Async Functions :-          25/02/2024
+=============================================
+
+-> async & await keywords
+ 
+-------------------------
+Async keeywords :-
+-----------------------------
+-> creates an async function .
+
+Ex:- async function geet(){
+return "hello world"; //return a promise
+	}
+	let hello=async() => {};
+
+
+----------------------------------
+Await keywords :-
+-------------------------------------------
+
+-> pause the execution of its surrounding async function until the promise is settled (resolved or rejected)
+
+Ex:-
+
+	async function show()
+	{
+	await colorChange("voilet",1000);
+	await colorChange("green",1000);
+	await colorChange("blue",1000);
+	await colorChange("pink",1000);
+	await colorChange("orange",1000);
+
+	return "done";
+	}
+
+-----------------------------------------
+Await keywords 
+-----------------------------------------
+
+-> Handling rejections with await.
+
+
+
+==========================================
+What is API
+=================================================
+
+-> Application Programming Interface.
+
+
+=======================================
+API some Random APIs :-
+========================================
+
+-> http://catfact.ninja/fact 
+
+https://www.boredapi.com/api/activity
+
+ 
+-----------------------------------
+Testing API requests
+-------------------------------------------------
+
+Tools:-
+             Hoppscoth
+ 
+             Postman
+
+--------------------------------
+Http Verbs :-
+------------------------------------------------
+-> Example :
+     
+GET: it is used to collect the data than we can use for get request.
+
+POST :  it is used to send the data than we can use for post request.
+
+
+DELETE:  it is used to delete dataf from api.
+  
+
+===============================
+JSON 
+============================================
+
+-> javaScript object notation . 
+
+   www.json.org
+
+-> it has key and value pair and all key are string in json.
+
+
+
+Ex:
+	 {
+ 	"string" :"hii",
+	"number" : 2.5,
+	"boolean":true,
+	"null":null,
+	object: {"name": "kyle","age":24},
+	}
+
+------------------------------
+Accessing data from json 
+---------------------------------------------
+-> json.parse(data) method
+
+    to parse a string data into a js object.
+
+-> json.stringify(json) method 
+
+ To parse a js object into json.
+
+
+Example:- 
+ 
+let jsonRes='{"fact":"A sexually-active feral hii mrs","length":145}';
+
+let valiRes=JSON.parse(jsonRes);
+console.log(valiRes);
+console.log(valiRes.fact);
+
+
+let student={
+    "name":"rahul",
+    "course":"mca",
+    
+}
+
+
+
+======================================
+           AJax :-
+================================================
+
+-> Asynchronous javaScript and XML.
+
+
+
+=============================
+	Satus code
+============================================
+ 
+200-0k  it is ok 
+
+404 - not found 
+
+400- bad request 
+
+500- intenal server error
+
+
+======================================
+          Addd Information in urls :-
+================================================
+
+-> Query Strings
+
+https://www.google.com/search?q=harry+porter
+
+
+==================================
+      Htttp headers :-
+==================================================
+ 
+-> header ,value
+
+-> it is provide additional information for request and response.
+
+-> it can send meta data for use http header.
+
+
+------------------------------------
+         Our First Request 
+--------------------------------------------
+using fetch  
+
+ex:- fetch(url)
+
+
+let url="https://catfact.ninja/fact";
+
+fetch(url)                      //request  1
+.then((Response)=>{
+    console.log(Response);
+    return  Response.json();
+})
+
+.then((data)=>{
+   console.log(data.fact);
+
+   return fetch(url);            //request 2
+})
+
+.then((res)=>{
+    return res.json();                    
+})
+
+.then((data1)=>{
+    console.log(data1.fact);
+})
+
+.catch((err)=>{
+    console.log(err);
+}); 
+
+
+output:  Response {type: 'cors', url: 'https://catfact.ninja/fact', redirected: false, status: 200, ok: true, …}
+app.js:505 A cats field of vision is about 185 degrees.
+app.js:515 Cats' hearing is much more sensitive than humans and dogs.
+
+
+===============================================
+      Axios     27/02/2024
+===============================================
+
+-> it is make http request.
+
+Example :-  
+
+let url="https://catfact.ninja/fact";
+
+
+async function getFacts()
+ {
+     try{
+         let res=await axios.get(url);
+         console.log(res.data.fact);
+
+     }catch(err)
+     {
+         console.log(err);
+
+     }
+}
+
+---------------------------------------
+Axios  
+---------------------------------------
+sending headers :-
+
+
+
+
+
+
+
+
+
+

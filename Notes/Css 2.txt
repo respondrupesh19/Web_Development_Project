@@ -1,0 +1,786 @@
+============================
+CSS  :-  05/02/2024
+============================
+
+-> Cascading Style sheets.
+ 
+->   human skalaton (html)       human body (css)
+
+-> it is languiage that is used to decribe the style of a document.
+
+===================================
+basic format of css
+=======================================
+ selector :-
+   
+h1{ 
+  color :   red;
+  }
+   |        |
+ property   value
+
+1) -> inline style
+ 
+2) -> Include Style
+
+3) -> External Stylesheet
+     
+      ex:
+          <head>
+              <link rel="stylesheet" href="style.css">
+          </head>    |                | 
+                  relation            file path
+
+========================
+color property
+=========================
+  -> Used to set the color of foreground.
+
+     color: purple
+      
+---------------------
+Backgounr color :-
+----------------------
+-> used to set the color of background.
+----------------------------------
+RGB color system
+-----------------------------------
+-> red green blue combination.
+
+
+==========================
+Hexadecimal or Hex color
+===========================
+color="#fffff"
+
+
+===========================
+Text Propertiea
+===========================
+ -> text-align
+    font-weight
+    text-decoration
+    line-hight
+    letter-spacing
+    font-size
+
+-------------------
+text-align
+----------------------
+text-align :left/start
+text-align :center
+text-align :right/end
+
+
+===================
+font-weight
+-----------------------
+font-weight:normal  //400
+font-weight: bold   //700
+font-weight: bolder
+font-weight: lighter
+
+
+-----------------------
+text-decoration :-
+-----------------------
+-> stes the appeareance of decoraltive lines on text like underline.
+
+text-decoration :underline
+text-decoration :none
+text-decoration :underline
+
+-------------------------
+line-height :-
+--------------------------
+
+-> controls the height of the line of text.
+
+line-height : normal
+
+line-height : 2.5
+
+----------------------------
+letter-spacing
+----------------------------
+-> controls the horizontal spacing behavoir b/w text characters.
+
+letter-spacing :normal 
+leter-spacing : 10px
+
+-----------------------------
+font-size units in css
+--------------------------------
+
+Absolute             relative 
+
+px                      %
+
+pt                      em
+
+pc                      rem
+
+cm                      ch
+
+mm                      vh
+
+in                      vw + many more
+
+px:-
+   -> most commeonly used absolute unit.
+           96px = 1 inch
+         -> not suitable for responsive websites.
+
+
+
+===========================
+font-family
+============================
+-> specifies a prioritized list of one or more font family names.
+
+Ex:- font-family :arial
+     font-family :avant grade , didot , sans-serif; 
+
+
+============================
+selectors in css :-
+===========================
+
+-> id selector 
+-> univesal selector 
+-> element selector
+-> class selector 
+
+===============================
+Adjacent sibling Combinator :-
+=================================
+-> Eg - Heading 3 that comes immeditaley after any paragraph.
+   
+  p+h3{
+     property:value
+      }
+=========================
+child combinator 
+=========================
+-> select all button which are direct childern of spans 
+
+span>button
+{
+propewerty:value
+}
+
+=========================
+Attribute selector 
+=========================
+-> slects elements based on the presence or value of a given attribute
+
+input [attr="value]{
+	property:value
+		  }
+
+Note:------------------ id > class > element
+
+
+=============================================
+pseudo class
+=============================================
+-> A keyword added to a selector that specifies a special state of the slected elements.
+
+:hover
+:active
+:checked
+:nth-of-type
+
+==================================================
+Class Selector :-
+==================================================
+
+-> 
+
+
+---------------------------------
+inherit properties :-
+
+div{
+    background-color: yellow;
+}
+form{
+    /* background-color: red; */
+    
+}
+input{
+    /* background-color: aqua; */
+    background-color: inherit;
+}
+button{
+    /* background-color: blue; */
+    background-color: inherit;
+}
+
+
+==============================================
+ Box Model in CSS :-   7/02/2024
+=============================================
+
+         Border
+   |------------------------------|
+   |		width		  |
+   |	|------------|            |
+   |	|   content  |            |
+   |    |------------|            |
+   |	  padding	          |
+   
+   ------------------------------ |
+-> Every thing store in box .
+
+
+1-> Height :- ................................
+
+By default , it sets the content area height of the element.
+
+	Ex:- div{
+		height:100px;
+		} 
+
+
+
+2-> Width:.......................>
+
+	div{
+    	height: 200px;
+    	width: 300px;
+    	background-color: pink;
+	}
+
+
+3-> Border :...............(width |height|color)
+
+ 	-> border width
+
+	-> border style
+
+	-> border color
+
+Ex:-
+   	  div{
+   	 height: 200px;
+   	 width: 300px;
+   	 background-color: pink;
+    	 border-width: 5px;  /* How much width */
+   	 border-style: solid;     /* it is simple line solid*/
+   	 border-color: black;  /*border color*/
+	}
+	h1{
+    	border-width: 2px;
+    	border-style: dashed; /* it is line dashed(----)*/
+    	border-color: green;
+
+	}
+
+----------------------------------------
+Border side :-
+---------------------------------------
+-> To control an indivisual side of the box.
+
+	-> border left
+
+	-> border right
+
+	-> border top
+
+	-> border buttom
+
+	Ex:-  border-left-style:dashed;
+
+  	  border-top:5px dotted rgb(255, 0, 0);
+
+    	border-bottom: 5px double green;
+
+    	border-right: 5px groove yellow ;
+
+------------------------------------
+Border Radius :-
+-------------------------------------
+
+-> Used to round corners of an elment's outer border edge.
+  	
+	div{
+	border-radius: 5px;}
+
+ /* border-top-right-radius: 50px; */
+    border-radius: 15px;
+
+
+
+
+4-> Padding :-----------------------------------
++++++++++++++++++++++
+
+	-> padding left
+	-> padding right
+	-> padding top
+	-> padding buttom
+
+Ex:-
+      padding-top: 10px;
+      padding-right: 10px;
+      padding-left: 10px;
+      padding-bottom:10px;
+	}
+
+----------------------------------------
+Padding Shorthand:-
+------------------------------------------
+-> 	#1 for all 4 sides 
+
+    		padding :50px;
+
+
+	#2 top & bottom | left & right
+
+		padding :1px 2px
+
+
+	#3 top|left & right| bottom :-
+
+		padding: 1px 2px 3px;
+
+
+	#4 top|right|bottom|left
+
+		padding : 1px 2px 3px 4px;
+
+  padding: 0px 25px 0px 25px;
+
+
+5-> Margin:-
+------------------
+
+-> To set spacing on the outside of border.
+
+-> margin-left
+
+-> margin-right
+
+-> margin-top
+
+-> margin-buttom
+
+
+ /* margin-bottom: 25px;
+    margin-left: 25px; */
+    margin: 20px 30px 40px 50px;
+}
+
+
+===============================================
+Display Properties
+=================================================
+
+-> it sets whether an element is treated as a block or inline element and the layout used for its children.
+
+	display :inline
+
+	display :block
+
+	.span2{
+  	  background-color: yellow;
+    	display: block;
+	}
+
+	h2{
+    	display: inline;
+    	background-color: aqua;
+	}
+
+-------------------------------------
+inline block
+--------------------------------------
+
+div{
+
+    height: 200px;
+    width: 200px;
+    background-color: aqua;
+    border:2px solid black;
+    margin:10px ;
+    display: inline-block;
+
+}
+
+=======================================
+Em 
+==================================================
+
+-> Unit       Relative to
+      
+   em        Font size of the parent int the case of typographical properties like font-size and font size of         the element it self in the case of other properties like width.
+
+
+
+==============================================
+	CSS Next Steps  8(c)/03/2024
+===============================================
+
+-> Apha Channel 
+
+-> Sets the opacity for a color.
+
+	range from 0 to 1
+
+	rgba(255,255,255,,0.3)
+
+
+
+Example
+
+	 div{
+    	height: 200px;
+    	width: 200px;
+    	background-color: rgba(76, 255, 0, 0.612);
+	}
+
+
+-------------------------
+	Opacity 
+------------------------
+
+-> Sets the opacity for the element .
+
+	Range 0 to 1
+
+
+	#opacity{
+   	 background-color: #ffa51f;
+    	opacity: 0.5;
+	}
+
+
+
+
+======================================
+	Css Transitions
+======================================
+
+-> Transitions enable you to define the transition between two states of an element.
+
+
+ 		  Transition state
+	square --------------------> circular
+
+
+
+--------------------------
+Transition Shorthand
+-------------------------
+
+->	 property name | duration | timing-function | delay
+
+
+transition : margin-top ws ease-in-out 0.2s;
+
+
+Ex:-	div{
+    	height: 200px;
+    	width: 200px;
+    	background-color: rgba(76, 255, 0, 0.812);
+    	transition-duration: 2s ;
+    	margin: 0 auto;
+    	margin-top: 20px;
+
+	}
+
+	div:hover{
+    	background-color:gold;
+    	border-radius: 50%;
+    	margin-top: 400px;
+
+	}
+
+
+
+-------------------------
+	Transform
+----------------------------
+
+-> This property lets you rotate , scale , skew or translate an element.
+
+	1) Rotate 
+
+		transform : rotate(45deg)
+
+
+
+
+	2) scale 
+		transform : scale(05);
+
+		transform : scale(1.5)
+
+	#two:hover{
+    transform: scale(0.65,2);
+}
+
+	3) Translate :-
+
+	#three:hover{
+
+  	transform: translate(-100px , -100px);
+		}
+
+	4) sckew 
+		#four:hover{
+ 	   transform: skew(45deg);
+		}
+
+
+============================================
+		Box Shadow..................
+=============================================
+
+-> It adds shadow effects around an elment's frame. 
+
+                      x   y   z(blur)
+
+	box-shadow : 2px 2px 10px green
+
+
+
+======================================
+	Background color
+=======================================
+
+-> Let's you set an image as a background.
+
+
+	background-mage:url("../somepath/..img.jpg);
+
+background-size:contain/cover/auto;
+
+
+
+==========================================
+	Position 
+==========================================
+
+-> The position css property sets how an element is positioned in a document .
+
+-> The top , right  , buttom and left properties determines the final locations of positioined element.
+
+	1) static :- 
+
+	relative
+
+	absolute
+
+	fixed
+
+1) static :-
+ 
+-> The top , right , bottom , left and x-index properties have no effect .
+
+	this is the default value.
+
+
+2) 
+
+
+	
+
+==============================================
+	----Flex-Box------    9(C)/03/2024
+===============================================
+
+-> Flexible box layout.
+
+-> It is a one dimensional layout method for arranging items in rows or columns.
+
+
+Ex:-  	#container{
+   	 border: 2px solid black;
+   	 width: 700px;
+    	 height: 400px;
+   	 margin: 0 auto;
+   	 background-color: azure;
+   	 display: flex;
+   	 padding-left: 1rem;
+   	 padding-right: 1rem;
+   	 flex-direction: column;
+	}
+
+
+
+
+
+
+
+================================================
+   	Grid Layout   10(c)/03/2024
+================================================
+
+-> Setting a container's display to grid will make all children grid items.
+
+
+	.container{
+    width: 600px;
+    height: 300px;
+    background-color: rgb(21, 153, 153);
+   display: grid;
+}
+.item{
+    width: 100px;
+    height: 50px;
+    background-color: greenyellow;
+    border: 2px solid black;
+    text-align: center;
+}
+
+
+
+-----------------
+Grid model
+------------------
+
+-> grid lines
+
+-> grid cell
+
+-> grid track
+
+
+----------------
+Grid template
+-----------------
+
+-> They define the lines & track sizing
+
+
+->   grid-template-rows
+
+->   grid-template-columns
+
+
+
+
+
+
+
+
+====================================
+	CSS Animations 
+=======================================
+
+-> To animate css elements.
+
+
+
+	@keyframe myName{
+
+		from{ font-size:20px}
+
+		to{font-size:40px}
+
+		} 
+	
+		
+-> animation-name
+
+-> animation-delay
+
+-> animation-timing-functions
+
+-> animation-duration
+
+-> animation-iterations-count
+
+-> animation-direction
+
+	.box{
+    height: 200px;
+    width: 200px;
+    text-align: center;
+
+    background-color: rgb(155, 1, 1);
+   
+    /* animation-name: colorAnimate;
+    animation-duration: 2s;
+    animation-timing-function: ease-in ;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal; */
+
+    animation:colorAnimate 3s ease-in 0s infinite normal;
+}
+
+@keyframes colorAnimate{
+
+    from{
+        background-color: aqua;
+        font-size: 20px;
+    }
+
+    to{
+        background-color: blue;
+        font-size: 40px;
+    }
+
+}
+
+
+
+
+
+
+
+
+============================================
+	Media Queries  :-
+===========================================
+
+-> help create a responsive website.
+
+-> media features-width (of view port)
+
+
+	 @media(width:400px)
+		{
+		div{
+		background-color:red;
+		}
+		}
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

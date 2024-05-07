@@ -1,0 +1,510 @@
+================================================
+          MySql (Database)  35(c)/02/2024
+==============================================
+
+
+MySql (DB)  <---------- SQL (language)
+-----------
+
+
+=================================================
+       what is a Database 
+===============================================
+
+-> it is collection of data in a format that can be easily accessed.
+
+---------------------
+why databases :-
+---------------------
+
+-> can store large data.
+
+-> feature like security ,scalability etc.
+
+-> Easier to insert , update or delete data.
+
+
+-----------------------
+sql vs Nosql
+--------------------------------------------------
+
+sql:-    relational database (data store in tables)
+-------
+	Ex:- Mysql ,oracle,postgreSql
+
+
+NoSql :-  Non relatoional database (data stores in doccument /key -vallgraph etc..
+--------
+	Ex:- mongoDb ,Cassandra etc.
+
+
+
+=====================
+Sql
+===========================
+
+-> sql is a programming language used to interact with relational databases.
+
+
+
+create Dtabase &  Table....................
+
+Ex:- 
+
+create database college;
+
+create database xyz_company;
+
+drop database xyz_company;
+
+show databases;
+
+use college;
+create table student(
+rollno int,
+name varchar(30),
+age int(5));
+
+insert into student values(101,'pandey',25),
+(102,'mahadev',23),(103,'pragati' ,25),(104,'bijeta',22);
+
+select * from student;
+
+
+--------------------------------------------------
+Database Queries..................
+-------------------------------------------------
+
+step 1:- create database db_name
+
+	create database if not exists db_name
+
+step 2:- Drop database db_name
+
+	 drop database if exists db_name
+
+step 3:- show database
+	
+	 show tables
+
+
+------------------------------
+table queries 
+--------------------------------
+
+-> create table (schema/colomns)
+
+Ex:-	create table student(
+	rollno int,
+	name varchar(30),
+	age int(5));
+
+
+===============================================
+Constraints :-=
+==============================================
+-> Rules fro data in table .
+
+
+NOT NULL : coloumn cannot have a null value
+
+UNIQUE  :  all value in column are diff
+
+DEFAULT : sets the default value of column
+
+CHECK : it can limit the values allowed in a cloumn. 
+
+
+Ex:-
+
+ create table user (
+
+ id int  primary key,
+
+ name varchar(30) NOT NULL,
+
+ age int,
+
+ email varchar(34) UNIQUE,
+
+ follower int default 0,
+
+ following int ,
+
+ constraint check (age>=18));
+
+
+
+1) Primary key :- makes a column unique & not but used only for one.
+
+	create table emp(
+
+	id int not null,
+
+	primary key(id));
+
+
+
+
+
+2) foregin key : prevent action that would destroy links between tables.
+
+
+creat table temp(
+
+	cust_id int,
+	foregin key (cust_id) references customer(id)
+	);
+
+
+
+-------------------------------------------
+Where Clause :-
+------------------------------------------------
+
+-> Arithematic operator : +(addition ), -(sub) etc.
+
+-> Comparision operator :- =(equal to), !=(not equal to)
+
+-> logical operator AND OR IN  BETWEEN etc..
+
+
+-------------------------------------
+Limit Clause :-
+----------------------------------------------
+
+-> Sets an upper limit on number of(tuples) rows to be returned.
+
+Ex:	 select col1,col2 from table_name
+	 LIMIT number;
+
+
+---------------------------------------------------
+Order by clause 
+---------------------------------------------------
+
+-> to sort in accending order desc. ;
+
+-> select col1,col2 from table_name ;
+
+	select col1, col2 from table_name 
+	ORDER BY col_name(s) ASC;
+
+
+
+================================================
+Aggregate Function :-
+==================================================
+
+-> Aggeregate function perform a calculation on a set of values , and returb a single value.
+
+	count()
+	MAX()
+	MIN()
+	SUM()
+	AVG()
+
+
+========================================
+Group by Clause :-
+=================================================
+
+-> Groups rows that have the same values into summary rows.
+
+-> it collects from multiple records and groups the result by one or more column.
+
+	select col1,col2
+	from table_name
+	GROUP BY col_name(S);
+
+
+	select age ,max(folllowers)
+	from user GROUP BY age;
+
+
+-> Generally we use group by with some aggregation function.
+
+
+=========================================
+Having Clause
+=================================================
+
+-> Similar to where i.e applies some condition on rows .but it is used when want to appply any condtion after grouping.
+
+
+	select age ,max(followers)
+	from user
+	group by age,
+	having max(followers)>200;
+ 
+
+
+
+-> where is for the table Having is for a group .
+
+-> Grouping is necessary for having.
+
+
+===============================================
+General Order :-
+==================================================
+
+-> SELECT column (s)
+
+-> FROM table_name
+
+-> WHERE condtion 
+
+-> GROUP BY (columns)
+
+-> HAVING (condition)
+
+-> ORDER BY cloumn(s) ASC;
+
+
+
+===================================================
+Table Queries :-
+===================================================
+
+-> Update (to update exiting rows).
+
+Ex:-
+
+	UPDATE table_name
+        set follower=600
+        where age=16;
+
+      set sql_safe_update=0; 
+
+-> (if update time error than write command)
+
+
+-------------
+Delete
+-------------
+
+	delete from user 
+	where age=17;
+
+
+-----------------------------------------
+	Alter command
+---------------------------------------------
+
+-> Alter (to change the schema)
+
+
+ Add column 
+----------
+	Alter table table_name 
+	Add column column_name datatype constraint;
+
+Drop column
+-----------
+	alter table table_name
+	drop column column_name;
+
+---------
+rename
+---------
+	
+	Alter table table_name
+	rename to new_table_name;
+
+
+--------------------------------------
+Truncate (to delete tables data )
+---------------------------------------------------
+
+-> Truncate Table table_name;
+
+
+
+====================================================
+     	FAKER   :-     (37(c) /02/2024) 
+====================================================
+
+-> To generate fake data.  (npm i @faker-js/faker)
+
+ 
+	userId       username     email   password
+
+Ex:- const {faker}= require('@faker-js/faker');
+
+
+let  createRandomUser= () =>  {
+    return {
+      userId: faker.string.uuid(),
+      username: faker.internet.userName(),
+      email: faker.internet.email(),
+      avatar: faker.image.avatar(),
+      password: faker.internet.password(),
+      birthdate: faker.date.birthdate(),
+      registeredAt: faker.date.past(),
+    };
+  }
+
+  console.log(createRandomUser());
+
+
+	
+====================================================
+	MYSQL@ package:------------
+====================================================
+
+-> To connect Node with MySQL.
+
+ 	connection.end();  //to close connection
+
+
+
+client ----------> server(API)  -------->DB(database)
+(front)            (back)
+
+
+
+-/> npm i mysql2    (install)
+
+
+-------------------------------------------
+	USing SQL from CLI
+--------------------------------------------
+
+/usr/local/mysql -u root -p
+
+create schema.sql
+
+source.sql  //in CLI
+
+
+
+const mysql=require("mysql2");
+
+
+const connection=mysql.createConnection({
+    host:'localhost',
+    user:'root',
+    database:'future_app',
+    password:'coder',
+});
+
+try{
+
+
+    connection.query("show tables",(err,result)=>{
+    
+        if(err) throw err;
+        console.log(result);
+    
+    });
+}
+catch(err)
+{
+    console.log(err);
+}
+connection.end();
+
+------------------------------------------------
+1) Using work banch
+
+2) using mysql package
+
+3) /usr/local/mysql/bin/mysql -u root -p
+
+4)
+
+
+
+let q="insert into user (id ,username,email,password) values ?";
+
+let user=[
+    ["12","123_mes2","pandeycoder@gamail.com","abc2"],
+    ["1234","123_msc","pandeycoder@gail.comc","abc3"] 
+];
+try{
+
+
+    connection.query(q,[user],(err,result)=>{
+    
+        if(err) throw err;
+        console.log(result);
+        console.log(result[0]);
+        console.log(result[1]);
+    
+    });
+}
+catch(err)
+{
+    console.log(err);
+}
+connection.end();
+
+
+
+------------------------------
+	Batch command 
+--------------------------------------
+
+
+
+let  createRandomUser= () =>  {
+    return [ 
+      faker.string.uuid(),
+      faker.internet.userName(),
+      faker.internet.email(),
+      faker.internet.password(),
+    ];
+    };
+
+
+
+let q="insert into user (id ,name,password,email) values ?";
+
+
+
+-> let data=[];
+for(let i=1;i<=100;i++)
+{
+    //console.log(createRandomUser());
+
+
+    data.push(createRandomUser());
+}
+
+
+
+
+==============================================
+	++++++++ Routing  +++++++++++++++
+==============================================
+
+
+->  Get / show no. of database;
+
+-> Get /user show users( email ,id ,username)
+
+-> patch  /user/:id  ------> username edit
+
+-> Add  (post request)
+
+-> Delete
+
+
+-------------------------
+Setting up express App
+--------------------------
+
+-> Get/ fetch & show total number of users on our app.
+
+-> mysql> select count(*) from user;
+
+
+
+
+
+
+
+
+
+
